@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ORDER APP</title>
+  </head>
+  <body>
+    <h3>중분류 화면</h3>
+    <form action="/" method="GET">
+      <input type="submit" value="이전" />
+    </form>
+
+    {% for item in datum %}
+    <form action="/step1_select" method="GET">
+      <input type="hidden" name="middleData" value="{{item['id']}}" />
+      <button>{{item["name"]}}</button>
+    </form>
+    {% endfor %}
+    <form action="/step2" method="GET">
+      <input type="submit" value="다음" />
+    </form>
+  </body>
+</html>
