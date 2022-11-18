@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ORDER APP</title>
-</head>
-<body>
+  </head>
+  <body>
     <h3>추가/주문 선택 화면</h3>
-    <form action="/step3" method="GET" >
-        <input type="submit" value="이전"   />
+    <form action="/step3" method="GET">
+      <input type="submit" value="이전" />
     </form>
-    <form action="/pay1" method="GET" >
-        <input type="submit" value="다음"   />
+    <form action="/pay1" method="GET">
+      <input type="submit" value="다음" />
+      <form action="/pay1" method="GET">
+        <input type="submit" value="결제하기" />
+      </form>
+      <form action="/step1" method="GET">
+        <input type="submit" value="추가주문" />
+      </form>
     </form>
-</body>
+    <div>{{menu}} - {{option}}</div>
+  </body>
 </html>

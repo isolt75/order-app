@@ -13,7 +13,7 @@
     </form>
     {% for item in list %}
     <form action="/step2_select" method="GET">
-      <input type="hidden" name="middleData" value="{{item['id']}}" />
+      <input type="hidden" name="middleData" value="{{item["name"]}}" />
       <button>{{item["name"]}}</button>
     </form>
     {% endfor %}

@@ -22,6 +22,8 @@ MIDDLE_SEQ = [
 ]
 SELECT_MIDDLE_SEQ = None
 SELECT_MIDDLE_SEQ2 = None
+SELECT_MIDDLE_SEQ3 = None
+
 MENUS = [
 
     {
@@ -135,19 +137,24 @@ def selectStep1():
             arr.append(item)
 
     return render_template("step2.html",list=arr)
-
 @app.route("/step2_select")
 def selectStep2():
     param = request.args.get("middleData")
+    global SELECT_MIDDLE_SEQ2
     SELECT_MIDDLE_SEQ2 = param
     
 
-    arr =[]
-    for item in MENUS : 
-        if(int(item["id"]) == int(param)):
-            arr.append(item)
+    return render_template("step3.html",list=SELECT_MIDDLE_SEQ2)
 
-    return render_template("step3.html",list=arr)
+@app.route("/step3_select")
+def selectStep3():
+    param = request.args.get("option")
+
+
+    SELECT_MIDDLE_SEQ3 = param
+    
+    return render_template("order.html",option=SELECT_MIDDLE_SEQ3,menu=SELECT_MIDDLE_SEQ2)
+
 
 
 if __name__ == "__main__":

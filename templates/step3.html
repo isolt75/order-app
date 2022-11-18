@@ -11,12 +11,15 @@
     <form action="/step2" method="GET">
       <input type="submit" value="이전" />
     </form>
+    <form action="/step3_select" method="GET">
+      <input type="submit" value="ICE" name="option" />
+      <input type="submit" value="HOT" name="option" />
+    </form>
 
     <form action="/order" method="GET">
       <input type="submit" value="다음" />
     </form>
-    {% for item in list %}
-    <div>{{item["name"]}}</div>
-    {% endfor %}
+
+    <div>{{list}}</div>
   </body>
 </html>
