@@ -1,5 +1,12 @@
 from flask import Flask,render_template,request
 
+
+# SECURITY <- Server, BackEnd의 필수 요건
+
+# 1차 : 데이터 의존성 체크 (데이터 무결성)
+# 2차 : 파일 분할 관리
+# 3차 : 코드 분할 관리
+
 app = Flask(__name__)
 
 # 중분류 Coffee, Tea, Smoothie, Dessert
@@ -75,6 +82,19 @@ MENUS = [
         "parntId" : 4
     },
 ]
+
+# 파라미터 A : 기준 데이터(배열)
+# 파라미터 B : 비교 데이터(문자열)
+# 파라미터 C : 파라미터 A에 속성명
+def compareData(pa, pb, pc):
+     
+    flag = False
+
+    for item in pa:
+        if item[pc] == pb :
+            flag = True
+
+    return flag
 # 매장 포장 선택 화면 진입
 
 @app.route("/")
@@ -129,7 +149,17 @@ def goFinal() :
 def selectStep1():
     param = request.args.get("middleData")
     SELECT_MIDDLE_SEQ = param
+    security_flag1 = str(param).isnumeric
+    if not security_flag1:
+        return render_template("step1.html",datum=MIDDLE_SEQ)
     
+    security_flag2 = int(param) > 0
+    if not security_flag2:
+        return render_template("step1.html",datum=MIDDLE_SEQ)
+    
+    security_flag3 = int(param) <= int(len(MIDDLE_SEQ))
+    if not security_flag3:
+        return render_template("step1.html",datum=MIDDLE_SEQ)
 
     arr =[]
     for item in MENUS : 
@@ -140,6 +170,11 @@ def selectStep1():
 @app.route("/step2_select")
 def selectStep2():
     param = request.args.get("middleData")
+
+    flag = compareData(MENUS, param, "id")
+
+    if not flag :
+        return render_template("step1.html", datum=MIDDLE_SEQ)
     global SELECT_MIDDLE_SEQ2
     SELECT_MIDDLE_SEQ2 = param
     
@@ -149,7 +184,6 @@ def selectStep2():
 @app.route("/step3_select")
 def selectStep3():
     param = request.args.get("option")
-
 
     SELECT_MIDDLE_SEQ3 = param
     
