@@ -87,7 +87,7 @@ MENUS = [
 # 파라미터 B : 비교 데이터(문자열)
 # 파라미터 C : 파라미터 A에 속성명
 def compareData(pa, pb, pc):
-     
+    
     flag = False
 
     for item in pa:
@@ -171,10 +171,7 @@ def selectStep1():
 def selectStep2():
     param = request.args.get("middleData")
 
-    flag = compareData(MENUS, param, "id")
-
-    if not flag :
-        return render_template("step1.html", datum=MIDDLE_SEQ)
+    
     global SELECT_MIDDLE_SEQ2
     SELECT_MIDDLE_SEQ2 = param
     

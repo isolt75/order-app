@@ -1,17 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ORDER APP</title>
-</head>
-<body>
-    <h3>매장/포장 선택 화면</h3>
-    
-    <form action="step1" method="GET" >
-        <input type="submit" value="다음"   />
-    </form>
-   
-</body>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        position: relative;
+      }
+
+      .screen {
+        width: 100%;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .screen_title {
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .screen_submit {
+        outline: none;
+        border: none;
+        background: none;
+
+        width: 350px;
+        height: 50px;
+
+        cursor: pointer;
+        color: #fff;
+        font-size: 30px;
+        border-radius: 5px;
+        background-color: skyblue;
+      }
+
+      .modal {
+        width: 500px;
+        height: 300px;
+        background-color: orange;
+        display: none;
+
+        position: absolute;
+
+        border-radius: 5px;
+        box-shadow: 3px 3px 10px #d7d7d7;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="screen">
+      <div>
+        <h3 class="screen_title">매장/포장 선택 화면</h3>
+      </div>
+
+      <div>
+        <form action="step1" method="GET">
+          <input class="screen_submit" type="submit" value="다음" />
+        </form>
+      </div>
+      <button id="modalBtn">OPEN</button>
+
+      <div class="modal" id="modal-js">
+        <button id="modalBtn-close">CLOSE</button>
+      </div>
+    </section>
+  </body>
+
+  <script>
+    const modalBtnDOM = document.getElementById("modalBtn");
+    const modalDOM = document.getElementById("modal-js");
+    const modalBtnCloseDOM = document.getElementById("modalBtn-close");
+
+    function openModal() {
+      const prev = modalDOM.style.display;
+      if (prev === "") modalDOM.style.display = "flex";
+      if (prev === "none") modalDOM.style.display = "flex";
+      if (prev === "flex") modalDOM.style.display = "none";
+    }
+
+    modalBtnDOM.addEventListener("click", openModal);
+    modalBtnCloseDOM.addEventListener("click", openModal);
+  </script>
 </html>

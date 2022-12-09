@@ -6,20 +6,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ORDER APP</title>
   </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .screen {
+      width: 100%;
+      height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .menu {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .menu_submit {
+      outline: none;
+      border: none;
+      background: none;
+
+      width: 150px;
+      height: 50px;
+
+      cursor: pointer;
+      color: #fff;
+      font-size: 20px;
+      border-radius: 5px;
+      background-color: navajowhite;
+    }
+
+    .screen_title {
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    .menu_button {
+      outline: none;
+      border: none;
+      background: none;
+
+      width: 350px;
+      height: 50px;
+
+      cursor: pointer;
+      color: #fff;
+      font-size: 30px;
+      border-radius: 5px;
+      background-color: skyblue;
+    }
+    .menulist {
+      font-size: 30px;
+      color : lightcoral;
+      outline: none;
+      border: none;
+      background: none;
+      width: 350px;
+      height: 50px;
+      text-align : center;
+    }
+  </style>
+  <section class="screen">
   <body>
-    <h3>옵션선택 화면</h3>
-    <form action="/step2" method="GET">
-      <input type="submit" value="이전" />
-    </form>
+    <h3 class="screen_title">옵션선택 화면</h3>
+
+    <section class="menu">
     <form action="/step3_select" method="GET">
-      <input type="submit" value="ICE" name="option" />
-      <input type="submit" value="HOT" name="option" />
+      <input class="menu_button"type="submit" value="ICE" name="option" />
+      <input class="menu_button"type="submit" value="HOT" name="option" />
     </form>
-
+  </section>
+  <section class="menu">
+    <form action="/step2" method="GET">
+      <input class="menu_submit"type="submit" value="이전" />
+    </form>
     <form action="/order" method="GET">
-      <input type="submit" value="다음" />
+      <input class="menu_submit"type="submit" value="다음" />
     </form>
+  </section>
 
-    <div>{{list}}</div>
+    <div class="menulist">{{list}}</div>
+  </section>
   </body>
 </html>
